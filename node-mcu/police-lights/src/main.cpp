@@ -1,7 +1,7 @@
 #include <Arduino.h>
 
-#define RED D0
-#define BLUE D1
+#define RED D5
+#define BLUE D6
 
 void setup() {
   Serial.begin(115200);
