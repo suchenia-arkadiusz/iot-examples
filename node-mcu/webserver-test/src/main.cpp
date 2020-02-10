@@ -23,6 +23,7 @@ void configureWiFi() {
 
 void configureEndpoints() {
   pinMode(2, OUTPUT);
+  pinMode(5, INPUT_PULLUP);
 
   server.on("/led/on", []() {
     digitalWrite(2, LOW);
@@ -32,6 +33,14 @@ void configureEndpoints() {
   server.on("/led/off", []() {
     digitalWrite(2, HIGH);
     server.send(200, "text/plain", "Led is off");
+  });
+
+  server.on("/button", []() {
+    server.send(200, "text/plain", String(digitalRead(5)));
+  });
+
+  server.on("/pot", []() {
+    server.send(200, "text/plain", String(analogRead(A0)));
   });
 }
 
