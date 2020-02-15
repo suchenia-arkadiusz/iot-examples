@@ -1,10 +1,11 @@
 package pl.arusoftware.temperaturetestserver.data.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import pl.arusoftware.temperaturetestserver.data.valueobjects.WeatherSensorValue;
+
+import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Sensor {
@@ -14,6 +15,10 @@ public class Sensor {
     @ManyToOne
     @JoinColumn(name = "DEVICE_ID", nullable = false)
     private Device device;
+
+    @ElementCollection
+    @CollectionTable(name = "SENSOR_VALUE")
+    private Set<WeatherSensorValue> values = new HashSet<>();
 
     public Sensor() {}
 
@@ -40,6 +45,14 @@ public class Sensor {
 
     public Device getDevice() {
         return device;
+    }
+
+    public Set<WeatherSensorValue> getValues() {
+        return values;
+    }
+
+    public void addValue(WeatherSensorValue value) {
+        values.add(value);
     }
 
     private Sensor(SensorBuilder builder) {
