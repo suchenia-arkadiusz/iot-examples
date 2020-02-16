@@ -7,8 +7,8 @@
 #define BME_MISO D4
 #define BME_MOSI D2
 #define BME_CS D3
-#define RED_LED D5
-#define BLUE_LED D6
+#define SERIAL_NUMBER "NMCU_1581860204129"
+#define SENSOR_SERIAL_NUMBER "TAHP_1581860204129"
 
 #define SAELEVELPRESSURE_HPA (1013.25)
 
@@ -18,39 +18,19 @@ unsigned long delayTime;
 float temp;
 
 void printValues() {
-  Serial.print("Temperature: ");
-  temp = bme.readTemperature();
-  Serial.print(temp);
-  Serial.println(" C");
-  
-  Serial.print("Pressure: ");
-  Serial.print(bme.readPressure() / 100.0F);
-  Serial.println(" hPa");
-  
-  Serial.print("Approx. Altitude: ");
-  Serial.print(bme.readAltitude(SAELEVELPRESSURE_HPA));
-  Serial.println(" m");
-  
-  Serial.print("Humidity: ");
-  Serial.print(bme.readHumidity());
-  Serial.println(" %");
-  
-  Serial.println();
+  String request = "{\"device\":{\"id\":\"" + String(SERIAL_NUMBER) + "\",\"sensors\":[{\"id\":\"" + String(SENSOR_SERIAL_NUMBER) + "\",\"value\":{";
 
-  if(temp > 23.0F) {
-    digitalWrite(RED_LED, HIGH);
-    digitalWrite(BLUE_LED, LOW);
-  } else {
-    digitalWrite(BLUE_LED, HIGH);
-    digitalWrite(RED_LED, LOW);
-  }
+  request += "\"temperature\":" + String(bme.readTemperature()) + ",";
+  request += "\"pressure\":" + String(bme.readPressure() / 100.0F) + ",";
+  request += "\"attitude\":" + String(bme.readAltitude(SAELEVELPRESSURE_HPA)) + ",";
+  request += "\"humidity\":" + String(bme.readHumidity());
+  request += "}}]}}";
+
+  Serial.println(request);
 }
 
 void setup() {
   Serial.begin(115200);
-  pinMode(RED_LED, OUTPUT);
-  pinMode(BLUE_LED, OUTPUT);
-  Serial.println("BME280 Test");
 
   bool status;
 
