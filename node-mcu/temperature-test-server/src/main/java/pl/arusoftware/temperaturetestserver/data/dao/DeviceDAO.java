@@ -15,6 +15,10 @@ public class DeviceDAO {
     }
 
     public void persist(Device device) {
-        System.out.println("Test");
+        repository.save(device);
+    }
+
+    public Device getDevice(String id) {
+        return repository.findById(id).orElse(null);
     }
 }

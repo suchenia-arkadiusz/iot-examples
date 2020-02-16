@@ -16,7 +16,7 @@ public class Sensor {
     @JoinColumn(name = "DEVICE_ID", nullable = false)
     private Device device;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.LAZY)
     @CollectionTable(name = "SENSOR_VALUE")
     private Set<WeatherSensorValue> values = new HashSet<>();
 

@@ -15,6 +15,10 @@ public class SensorDAO {
     }
 
     public void persist(Sensor sensor) {
+        repository.save(sensor);
+    }
 
+    public Sensor getSensor(String id) {
+        return repository.findById(id).orElse(null);
     }
 }
