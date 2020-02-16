@@ -29,7 +29,7 @@
         <appender-ref ref="Console" />
     </root>
 
-    <logger name="pl.arusoftware.temperaturetestserver" level="trace" additivity="false">
+    <logger name="pl.arusoftware.temperaturetestserver" level="info" additivity="false">
         <appender-ref ref="RollingFile" />
         <appender-ref ref="Console" />
     </logger>
