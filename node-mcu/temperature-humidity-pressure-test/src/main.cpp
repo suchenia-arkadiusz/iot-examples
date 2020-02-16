@@ -2,6 +2,8 @@
 #include <SPI.h>
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BME280.h>
+#include <ESP8266HTTPClient.h>
+#include <ESP8266WiFi.h>
 
 #define BME_SCK D1
 #define BME_MISO D4
@@ -17,6 +19,8 @@ Adafruit_BME280 bme(BME_CS, BME_MOSI, BME_MISO, BME_SCK);
 unsigned long delayTime;
 float temp;
 
+HTTPClient http;
+
 void printValues() {
   String request = "{\"device\":{\"id\":\"" + String(SERIAL_NUMBER) + "\",\"sensors\":[{\"id\":\"" + String(SENSOR_SERIAL_NUMBER) + "\",\"value\":{";
 
@@ -25,12 +29,26 @@ void printValues() {
   request += "\"attitude\":" + String(bme.readAltitude(SAELEVELPRESSURE_HPA)) + ",";
   request += "\"humidity\":" + String(bme.readHumidity());
   request += "}}]}}";
-
-  Serial.println(request);
+  
+  http.begin("http://192.168.8.158:8080/api/v1/weatherinfo");
+  http.addHeader("Content-Type", "application/json");
+  http.sendRequest("POST", request);
+  http.end();
 }
 
 void setup() {
   Serial.begin(115200);
+
+  WiFi.mode(WIFI_STA);
+  WiFi.hostname("01-ESP-SmartLight");
+  WiFi.begin("Arek_Room");
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+
+  Serial.println(WiFi.localIP());
 
   bool status;
 
