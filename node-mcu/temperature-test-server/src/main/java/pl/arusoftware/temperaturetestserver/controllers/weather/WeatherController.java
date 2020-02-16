@@ -1,7 +1,6 @@
 package pl.arusoftware.temperaturetestserver.controllers.weather;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,8 +22,6 @@ public class WeatherController {
 
     @PostMapping(value = "/weatherinfo", produces = MediaType.APPLICATION_JSON_VALUE)
     public void putDeviceInfo(@RequestBody WeatherInfoRequest request) throws JsonProcessingException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        System.out.println(objectMapper.writeValueAsString(request));
         for (WeatherSensor sensor : request.getDevice().getSensors()) {
             WeatherInfo.WeatherInfoData weatherInfoData = new WeatherInfo.WeatherInfoData.WeatherInfoDataBuilder()
                     .withAttitude(sensor.getValue().getAttitude())
