@@ -39,4 +39,14 @@ public class WeatherValue {
     public void setHumidity(float humidity) {
         this.humidity = humidity;
     }
+
+    @Override
+    public String toString() {
+        return "WeatherValue{" +
+                "temperature=" + temperature +
+                ", pressure=" + pressure +
+                ", attitude=" + attitude +
+                ", humidity=" + humidity +
+                '}';
+    }
 }

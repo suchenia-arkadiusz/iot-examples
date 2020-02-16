@@ -1,5 +1,7 @@
 package pl.arusoftware.temperaturetestserver.data.aggregates;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.arusoftware.temperaturetestserver.data.dao.DeviceDAO;
@@ -10,6 +12,8 @@ import pl.arusoftware.temperaturetestserver.data.valueobjects.WeatherSensorValue
 
 @Service
 public class WeatherInfo {
+    private static final Logger LOGGER = LoggerFactory.getLogger(WeatherInfo.class);
+
     private DeviceDAO deviceDAO;
     private SensorDAO sensorDAO;
 
@@ -25,9 +29,11 @@ public class WeatherInfo {
 
         if (null == device) {
             device = new Device.DeviceBuilder(data.deviceId).build();
+            LOGGER.info("Created new device entry with id: " + device.getId());
         }
         if (null == sensor) {
             sensor = new Sensor.SensorBuilder(data.sensorId).withDevice(device).build();
+            LOGGER.info("Created new sensor entry with id: " + sensor.getId());
         }
 
         WeatherSensorValue value = new WeatherSensorValue.WeatherSensorValueBuilder()

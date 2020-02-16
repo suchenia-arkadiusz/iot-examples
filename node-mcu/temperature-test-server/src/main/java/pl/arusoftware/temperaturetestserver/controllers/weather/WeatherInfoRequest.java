@@ -14,4 +14,11 @@ class WeatherInfoRequest {
     public void setDevice(WeatherDevice device) {
         this.device = device;
     }
+
+    @Override
+    public String toString() {
+        return "WeatherInfoRequest{" +
+                "device=" + device +
+                '}';
+    }
 }

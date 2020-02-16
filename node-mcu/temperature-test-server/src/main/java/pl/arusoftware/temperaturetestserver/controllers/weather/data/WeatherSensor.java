@@ -21,4 +21,12 @@ public class WeatherSensor {
     public void setValue(WeatherValue value) {
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        return "WeatherSensor{" +
+                "id='" + id + '\'' +
+                ", value=" + value +
+                '}';
+    }
 }

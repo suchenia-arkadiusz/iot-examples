@@ -24,4 +24,12 @@ public class WeatherDevice {
     public void setSensors(Set<WeatherSensor> sensors) {
         this.sensors = sensors;
     }
+
+    @Override
+    public String toString() {
+        return "WeatherDevice{" +
+                "id='" + id + '\'' +
+                ", sensors=" + sensors +
+                '}';
+    }
 }
