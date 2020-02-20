@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import pl.arusoftware.temperaturetestserver.data.entities.Device;
 import pl.arusoftware.temperaturetestserver.data.repositories.DeviceJPARepository;
 
+import java.util.List;
+
 @Service
 public class DeviceDAO {
     private DeviceJPARepository repository;
@@ -20,5 +22,9 @@ public class DeviceDAO {
 
     public Device getDevice(String id) {
         return repository.findById(id).orElse(null);
+    }
+
+    public List<Device> getDevices() {
+        return repository.findAll();
     }
 }

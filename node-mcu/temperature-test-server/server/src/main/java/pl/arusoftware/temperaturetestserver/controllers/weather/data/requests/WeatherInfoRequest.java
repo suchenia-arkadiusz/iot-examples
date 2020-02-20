@@ -1,8 +1,8 @@
-package pl.arusoftware.temperaturetestserver.controllers.weather;
+package pl.arusoftware.temperaturetestserver.controllers.weather.data.requests;
 
 import pl.arusoftware.temperaturetestserver.controllers.weather.data.WeatherDevice;
 
-class WeatherInfoRequest {
+public class WeatherInfoRequest {
     private WeatherDevice device;
 
     public WeatherInfoRequest() {}
