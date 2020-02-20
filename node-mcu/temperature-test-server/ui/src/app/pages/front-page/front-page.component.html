@@ -4,16 +4,16 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-12 col-md-3">
-          <app-info-card title="Temperatura" value="24" imgUrl="assets/img/temperature.png"></app-info-card>
+          <app-info-card title="Temperatura" [value]="temperature" imgUrl="assets/img/temperature.png"></app-info-card>
         </div>
         <div class="col-12 col-md-3">
-          <app-info-card title="Ciśnienie" value="926" imgUrl="assets/img/barometer.png"></app-info-card>
+          <app-info-card title="Ciśnienie" [value]="pressure" imgUrl="assets/img/barometer.png"></app-info-card>
         </div>
         <div class="col-12 col-md-3">
-          <app-info-card title="Wysokość" value="202" imgUrl="assets/img/altitude.png"></app-info-card>
+          <app-info-card title="Wysokość" [value]="altitude" imgUrl="assets/img/altitude.png"></app-info-card>
         </div>
         <div class="col-12 col-md-3">
-          <app-info-card title="Wilgotność" value="35" imgUrl="assets/img/humidity.png"></app-info-card>
+          <app-info-card title="Wilgotność" [value]="humidity" imgUrl="assets/img/humidity.png"></app-info-card>
         </div>
       </div>
     </div>

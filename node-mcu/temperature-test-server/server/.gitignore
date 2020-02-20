@@ -32,3 +32,4 @@ out/
 .vscode/
 
 logs
+src/main/resources/static

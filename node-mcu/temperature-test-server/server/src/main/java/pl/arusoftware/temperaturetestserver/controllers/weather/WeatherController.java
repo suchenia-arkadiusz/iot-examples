@@ -63,6 +63,7 @@ public class WeatherController {
                 .collect(Collectors.toSet());
     }
 
+    @CrossOrigin
     @GetMapping("/weatherInfo/newest/{sensorId}")
     public WeatherInfoResponse getActualWeather(@PathVariable("sensorId") String sensorId) {
         LOGGER.debug("Get actual weather info");
