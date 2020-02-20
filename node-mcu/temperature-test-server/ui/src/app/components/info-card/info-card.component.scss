@@ -1,0 +1,21 @@
+.info-card-container {
+  width: 100%;
+  min-height: 500px;
+  background-color: #fff;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.75);
+  margin-bottom: 40px;
+  padding: 20px;
+}
+
+.info-card-row {
+  text-align: center;
+}
+
+.info-card-value {
+  font-size: 72pt;
+}
+
+.info-card-image {
+  height: 200px;
+  margin: 10px 0 10px 0;
+}
