@@ -8,12 +8,12 @@ import { DeviceInfo } from '../model/device-info';
   providedIn: 'root'
 })
 export class WeatherService {
-  private readonly MAIN_URL = 'http://localhost:8080/api/v1/';
+  private readonly MAIN_URL = 'http://localhost:8080/api/v1';
 
   constructor(private http: HttpClient) { }
 
   public getDevices(): Observable<DeviceInfo[]> {
-    return this.http.get<DeviceInfo[]>(`${this.MAIN_URL}getDevices`);
+    return this.http.get<DeviceInfo[]>(`${this.MAIN_URL}/devices`);
   }
 
   public getActualWeather(sensorId: string): Observable<WeatherInfo> {
