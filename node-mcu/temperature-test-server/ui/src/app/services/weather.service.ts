@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Device } from '../model/device';
 import { Observable } from 'rxjs';
 import { WeatherInfo } from '../model/weather-info';
+import { DeviceInfo } from '../model/device-info';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +12,8 @@ export class WeatherService {
 
   constructor(private http: HttpClient) { }
 
-  public getDevices(): Observable<Device[]> {
-    return this.http.get<Device[]>(`${this.MAIN_URL}getDevices`);
+  public getDevices(): Observable<DeviceInfo[]> {
+    return this.http.get<DeviceInfo[]>(`${this.MAIN_URL}getDevices`);
   }
 
   public getActualWeather(sensorId: string): Observable<WeatherInfo> {
