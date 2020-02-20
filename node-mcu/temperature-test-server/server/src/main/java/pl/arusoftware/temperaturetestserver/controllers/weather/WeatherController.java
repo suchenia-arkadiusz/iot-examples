@@ -11,8 +11,8 @@ import pl.arusoftware.temperaturetestserver.controllers.weather.data.responses.D
 import pl.arusoftware.temperaturetestserver.controllers.weather.data.responses.WeatherInfoResponse;
 import pl.arusoftware.temperaturetestserver.data.aggregates.WeatherInfo;
 import pl.arusoftware.temperaturetestserver.data.dao.DeviceDAO;
-import pl.arusoftware.temperaturetestserver.data.valueobjects.WeatherSensorValue;
 import pl.arusoftware.temperaturetestserver.data.views.WeatherInfoView;
+import pl.arusoftware.temperaturetestserver.data.views.data.WeatherInfoViewDate;
 
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -70,7 +70,7 @@ public class WeatherController {
         return mapWeatherSensorValueToWeatherInfoResponse(weatherInfoView.getActualWeatherInfoForSensor(sensorId));
     }
 
-    private WeatherInfoResponse mapWeatherSensorValueToWeatherInfoResponse(WeatherSensorValue value) {
+    private WeatherInfoResponse mapWeatherSensorValueToWeatherInfoResponse(WeatherInfoViewDate.ActualWeatherInfo value) {
         WeatherInfoResponse response = new WeatherInfoResponse();
         response.setAltitude(value.getAttitude());
         response.setHumidity(value.getHumidity());

@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.arusoftware.temperaturetestserver.data.entities.Sensor;
 import pl.arusoftware.temperaturetestserver.data.repositories.SensorJPSRepository;
-import pl.arusoftware.temperaturetestserver.data.valueobjects.WeatherSensorValue;
+import pl.arusoftware.temperaturetestserver.data.views.data.WeatherInfoViewDate;
 
 @Service
 public class SensorDAO {
@@ -23,7 +23,7 @@ public class SensorDAO {
         return repository.findById(id).orElse(null);
     }
 
-    public WeatherSensorValue getActualWeatherInfoForSensor(String sensorId) {
+    public WeatherInfoViewDate.ActualWeatherInfo getActualWeatherInfoForSensor(String sensorId) {
         return repository.getActualWeatherInfoForSensor(sensorId);
     }
 }
