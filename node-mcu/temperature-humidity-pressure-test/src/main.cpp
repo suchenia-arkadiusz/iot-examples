@@ -30,7 +30,7 @@ void printValues() {
   request += "\"humidity\":" + String(bme.readHumidity());
   request += "}}]}}";
   
-  http.begin("http://192.168.8.158:8080/api/v1/weatherinfo");
+  http.begin("http://192.168.8.150:8080/api/v1/weatherinfo");
   http.addHeader("Content-Type", "application/json");
   http.sendRequest("POST", request);
   http.end();
@@ -59,7 +59,7 @@ void setup() {
   }
 
   Serial.println("-- Default test --");
-  delayTime = 10000;
+  delayTime = 60000;
 
   Serial.println();
 }
