@@ -33,6 +33,14 @@ public class Device {
         return displayName;
     }
 
+    @Override
+    public String toString() {
+        return "Device{" +
+                "id='" + id + '\'' +
+                ", displayName='" + displayName + '\'' +
+                '}';
+    }
+
     private Device(DeviceBuilder builder) {
         this.id = builder.id;
         this.displayName = builder.displayName;

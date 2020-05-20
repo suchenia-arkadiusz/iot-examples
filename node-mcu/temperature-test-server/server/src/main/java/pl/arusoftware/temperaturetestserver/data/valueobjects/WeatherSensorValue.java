@@ -55,6 +55,17 @@ public class WeatherSensorValue {
         return attitude;
     }
 
+    @Override
+    public String toString() {
+        return "WeatherSensorValue{" +
+                "date=" + date +
+                ", temperature=" + temperature +
+                ", humidity=" + humidity +
+                ", pressure=" + pressure +
+                ", attitude=" + attitude +
+                '}';
+    }
+
     private WeatherSensorValue(WeatherSensorValueBuilder builder) {
         this.date = builder.date;
         this.temperature = builder.temperature;

@@ -2,7 +2,13 @@ package pl.arusoftware.temperaturetestserver.data.entities;
 
 import pl.arusoftware.temperaturetestserver.data.valueobjects.WeatherSensorValue;
 
-import javax.persistence.*;
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -53,6 +59,16 @@ public class Sensor {
 
     public void addValue(WeatherSensorValue value) {
         values.add(value);
+    }
+
+    @Override
+    public String toString() {
+        return "Sensor{" +
+                "id='" + id + '\'' +
+                ", displayName='" + displayName + '\'' +
+                ", device=" + device +
+                ", values=" + values +
+                '}';
     }
 
     private Sensor(SensorBuilder builder) {
